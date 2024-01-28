@@ -1,0 +1,43 @@
+{% extends "base.html" %} {% load static %} {% block title %}Афиши{% endblock title %}
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/people.css' %}" />
+{% endblock styles %}
+{% block content %}
+<header>
+  <img class="header_image" src="{% static 'img/Безымянный-5-02 1.png' %}" alt="image" />
+  {% include 'include/nav.html' %}
+</header>
+<main>
+
+
+
+        {% for category in category_list %}
+
+        <div class="people_container" id="{{category.block}}">
+            <h2 class="people_title">{{category.title}}</h2>
+            <div class="people_content">
+                {% for people in people_list %}
+
+                {% if people.category == category %}
+                <a href="" class="people_card" style="background:url('{{people.image.url}}') center / cover">
+                    <h2>{{people.surname}} {{people.name}} {{people.middlename}}</h2>
+                </a>
+                {% endif %}
+
+                {% endfor %}
+            </div>
+        </div>
+
+        {% endfor %}
+
+
+
+
+
+
+
+    </main>
+{% endblock content %}
+{% block scripts %}
+<script src="{% static 'js/people.js' %}"></script>
+{% endblock scripts %}

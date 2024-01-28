@@ -1,0 +1,46 @@
+{% extends "base.html" %} {% load static %} {% block title %}История{% endblock title %}
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/press.css' %}" />
+{% endblock styles %}
+{% block content %}
+<header>
+  <img class="header_image" src="{% static 'img/Безымянный-5-02 1.png' %}" alt="image" />
+  {% include 'include/nav.html' %}
+</header>
+
+
+<main>
+
+        <div class="press">
+            <div class="press_title">Пресса</div>
+
+            <div class="press_wrapper">
+
+              {% for item in press_list %}
+              <div class="press_inner">
+                    <h3>{{item.name}}</h3>
+                    <p>
+                       {{item.text|truncatewords:20}}
+                    </p>
+
+                    <a class="press_link_first" href="{{item.url}}">{{item.url}}</a>
+                    <a class="press_link_second" href="{{item.id}}">подробнее</a>
+                </div>
+              {% endfor %}
+
+
+
+
+
+            </div>
+        </div>
+
+
+    </main>
+
+
+
+{% endblock content %}
+{% block scripts %}
+<script src="{% static 'js/press.js' %}"></script>
+{% endblock scripts %}

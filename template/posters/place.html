@@ -1,0 +1,114 @@
+{% extends "base.html" %} {% load static %} {% block title %}Заказ билетов{% endblock title %}
+{% load static %}
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/place.css' %}" />
+{% endblock styles %}
+{% block content %}
+<header>
+  <img class="header_image" src="{% static 'img/Безымянный-5-02 1.png' %}" alt="image">
+  {% include "include/nav.html" %}
+</header>
+<main>
+  <div class="actor_inner">
+    <span class="linksHover"><i class="fas fa-angle-left"></i> вернуться к списку</span>
+  </div>
+
+  <div class="place">
+    <div class="place_header">
+      <div>
+        <h2>{{poster.perfomance.title}}</h2>
+        <h5>длительность 2 часа</h5>
+      </div>
+      <div>
+        <p>выбрать дату</p>
+        <span>16/06 9:00</span>
+        <span>17/06 9:00</span>
+        <span>18/06 9:00</span>
+      </div>
+    </div>
+
+    <div class="place_container">
+      <div class="place_map">
+      </div>
+      <div class="controls">
+        <div class="control_plus"></div>
+        <div class="control_minus"></div>
+      </div>
+      <div class="map_info">
+        <div class="bought">
+          <div class="circle"></div>
+          <p>куплено</p>
+        </div>
+        <div class="free">
+          <div class="circle"></div>
+          <p>свободно</p>
+        </div>
+        <div class="yours">
+          <div class="circle"></div>
+          <p>ваше место</p>
+        </div>
+      </div>
+      <div class="loader active">
+        <div class="lds-facebook">
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pay">
+      <div class="pay_left">
+        <div class="pay_left_body">
+          <div class="pay_left_body_inner">
+            <h4 class="disApear">1</h4>
+            <p>Название спектакля</p>
+            <h4>16/06 9:00</h4>
+            <h4>партер/ряд 9/ место 6</h4>
+            <h3>500р</h3>
+            <i class="fas fa-times"></i>
+          </div>
+          <div class="pay_left_body_inner">
+            <h4 class="disApear">1</h4>
+            <p>Название спектакля</p>
+            <h4>16/06 9:00</h4>
+            <h4>партер/ряд 9/ место 6</h4>
+            <h3>500р</h3>
+            <i class="fas fa-times"></i>
+          </div>
+          <div class="pay_left_body_inner">
+            <h4 class="disApear">1</h4>
+            <p>Название спектакля</p>
+            <h4>16/06 9:00</h4>
+            <h4>партер/ряд 9/ место 6</h4>
+            <h3>500р</h3>
+            <i class="fas fa-times"></i>
+          </div>
+          <div class="pay_left_body_inner">
+            <h4 class="disApear">1</h4>
+            <p>Название спектакля</p>
+            <h4>16/06 9:00</h4>
+            <h4>партер/ряд 9/ место 6</h4>
+            <h3>500р</h3>
+            <i class="fas fa-times"></i>
+          </div>
+
+          <div class="pay_left_body_result">
+            <h3>итого</h3>
+            <h3>2000р</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="place_btn">
+      <button>оформить заказ</button>
+    </div>
+  </div>
+</main>
+{% endblock content %}
+{% block scripts %}
+{% include "include/jquery.html" %}
+{% include "include/svg-pan-zoom.html"%}
+<script src="{% static 'js/place.js' %}"></script>
+{% endblock scripts %}

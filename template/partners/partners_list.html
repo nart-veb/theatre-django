@@ -1,0 +1,62 @@
+{% extends "base.html" %} {% load static %} {% block title %}История{% endblock title %}
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/partner.css' %}" />
+{% endblock styles %}
+{% block content %}
+<header>
+  <img class="header_image" src="{% static 'img/Безымянный-5-02 1.png' %}" alt="image" />
+  {% include 'include/nav.html' %}
+</header>
+
+
+<main>
+
+        <div class="partner">
+            <h3 class="partner_title">Партнеры</h3>
+            <div class="partner_icons">
+                <div class="partner_wrapper">
+
+
+
+                    {% for item in partner_list %}
+                    <div class="partner_icons_child">
+                        <div class="partner_icons_child_header">
+                            <img src="{{item.image.url}}" alt="img">
+                        </div>
+                        <div class="partner_icons_child_body">
+                            <p>{{item.name}}</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+
+
+                </div>
+            </div>
+            <div class="partner_text">
+                <h3>Партнерам и друзьям Абхазского театра</h3>
+                <p class="partner_text_para">
+                    Мы хотим от всего сердца поблагодарить всех тех, кто оказывает поддержку нашему театру!
+                    Абхазский театр всегда был и остается национальным достоянием страны, символом абхазской культуры.
+                    Мы приглашаем к сотрудничеству всех, кто любит и ценит театральное искусство, кому небезразлична
+                    судьба абхазской  культуры, всех, для кого, Абхазский театр есть или станет родным!
+                    Вместе мы сможем объединить усилия в создании спектаклей, которыми смогут гордиться наши потомки.
+                </p>
+                <h3>Пакет индивидуальных привилегий</h3>
+                <p>1. Упоминание компании-спонсора в наружной рекламе </p>
+                <p>2. Выражение признательности спонсору на пресс-конференциях</p>
+                <p>3. Размещение информации о спонсоре на официальном сайте Абхазского театра</p>
+                <p>в печатной продукции театра: афиши (различные форматы), буклеты, программки, открытки-флаеры и т.д.</p>
+                <h3>Контактная информация</h3>
+                <p>Адрес:Республика Абхазия, г.Сухум, ул.Пушкина 1</p>
+                <p>Телефон: +7(840) 226-35-15</p>
+                <p>Электронная почта: abkhaztheatre@gmail.com</p>
+            </div>
+        </div>
+
+
+    </main>
+
+
+
+
+{% endblock content %}

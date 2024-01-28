@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Афиша{% endblock title %}
+{% block styles %}
+{% include 'include/owl-carousel-css.html' %}
+<link rel="stylesheet" href="{% static 'css/spectre.css' %}" />
+{% endblock styles %}
+{% block content %}
+<header>
+  <img class="header_image" src="{% static 'img/Безымянный-5-02 1.png' %}" alt="image" />
+  {% include 'include/nav.html' %}
+</header>
+<main>
+  <section class="info">
+     <h1 class="poster_title">Афиша</h1>
+
+    <div class="info_body">
+
+      <div class="info_child">
+        <div class="info_child_left">
+<!--                      <img src="{{poster.perfomance.placard.url}}">-->
+          <div class="info_child_left_image_one" style="background-image: url({{poster.perfomance.placard.url}});">
+
+          </div>
+        </div>
+
+        <div class="info_child_right">
+          <h3>{{ poster.time }}</h3>
+          <h4>Режиссер {{poster.perfomance.producer.formatted_full_name}}</h4>
+          <h1>{{poster.perfomance.title}}</h1>
+          <h4 class="info_h4">Спектакль в {{poster.perfomance.acts}} {% if poster.perfomance.acts == 1 %}акте{% endif %}
+            {% if poster.perfomance.acts > 1 %}актах{% endif %}</h4>
+          <h5>Автор: {{poster.perfomance.author}}</h5>
+          <h5>Режиссер: {{poster.perfomance.producer.formatted_full_name}}</h5>
+          <p>
+            {{poster.perfomance.description}}
+          </p>
+          <a href="{{poster.get_absolute_url}}place/">купить билет</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="actor_title">
+    <h3>актерский состав</h3>
+  </section>
+
+  <section class="actor_block">
+    <div class="swiper-container owl-carousel first">
+      {% for actor in actors %}
+      <a href="actors.html" class="actor_card">
+        <div class="actor_picture actor_picture_one">
+          <h3>{{actor.full_name}}</h3>
+        </div>
+        <div class="actor_content">
+          <h3>Главная роль</h3>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+  </section>
+
+  <div class="actor_inner">
+    <a href="afish.html" class="linksHover"><i class="fas fa-angle-left"></i> вернуться к списку</a>
+  </div>
+</main>
+{% endblock content %}
+{% block scripts %}
+{% include "include/jquery.html" %}
+{% include "include/owl-carousel-js.html" %}
+<script src="{% static 'js/spectre.js' %}"></script>
+{% endblock scripts %}

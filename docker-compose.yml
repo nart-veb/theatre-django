@@ -1,0 +1,64 @@
+version: '3.7'
+
+
+x-env: &env
+  env_file:
+    - .env.dev
+
+services:
+  web:
+    <<: *env
+    build: ./
+    container_name: theatre_web
+    restart: always
+    command: bash entrypoint.sh
+    volumes:
+      - .:/usr/src/app
+      - ./static:/usr/src/app/static
+      - ./media:/usr/src/app/media
+    ports:
+      - 8000:8000
+    #env_file:
+      #- ./.env.dev
+    depends_on:
+      - db
+   # networks:
+    #  - backend
+
+  db:
+    <<: *env
+    image: postgres:15.3-alpine
+    container_name: theatre_db
+    volumes:
+      - theatre_postgres_data:/var/lib/postgresql/data/
+    #env_file:
+     # - ./.env.dev
+    healthcheck:
+      test: pg_isready -d postgres -U postgres
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    ports:
+      - 5432:5432
+  #  networks:
+   #   - backend
+
+  nginx:
+    build: ./nginx
+    container_name: sound_cloud_nginx
+    restart: on-failure
+    ports:
+      - 80:80
+    volumes:
+      - ./static:/static
+      - ./media:/media
+    depends_on:
+      - web
+
+volumes:
+  theatre_postgres_data:
+
+#networks:
+ # backend:
+
+

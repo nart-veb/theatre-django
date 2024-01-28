@@ -1,0 +1,42 @@
+{% extends "base.html" %} {% load static %} {% block title %}История{% endblock title %}
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/hall.css' %}" />
+{% endblock styles %}
+{% block content %}
+<header>
+  <img class="header_image" src="{% static 'img/Безымянный-5-02 1.png' %}" alt="image" />
+  {% include 'include/nav.html' %}
+</header>
+
+
+<main>
+
+
+        <div class="hall">
+
+
+            {% for item in hall_list %}
+            <h2 class="hall_title">{{item.name}}</h2>
+            <div class="hall_wrapper">
+                <div class="big_hall_picture">
+                    {% for item_img in hall_img_list %}
+                    {% if item.id == item_img.hall.id %}
+                    <div class="big_hall_picture_inner"><img src="{{item_img.image.url}}" alt="img"></div>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+                <div class="hall_content">
+                {{item.descrpition|linebreaks}}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+    </main>
+
+
+
+{% endblock content %}
+{% block scripts %}
+<script src="{% static 'js/hall.js' %}"></script>
+{% endblock scripts %}

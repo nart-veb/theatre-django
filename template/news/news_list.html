@@ -1,0 +1,52 @@
+{% extends "base.html" %} {% load static %} {% block title %}История{% endblock title %}
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/news.css' %}" />
+{% endblock styles %}
+{% block content %}
+<header>
+  <img class="header_image" src="{% static 'img/Безымянный-5-02 1.png' %}" alt="image" />
+  {% include 'include/nav.html' %}
+</header>
+
+
+<main>
+
+        <div class="news">
+            <div class="news_title">Новости</div>
+
+            <div class="news_wrapper">
+
+
+              {% for item in news_list %}
+                <div class="news_inner">
+                   {% if item.image %}
+                    <div class="news_image">
+                        <img src="{{item.image.url}}" alt="img">
+                    </div>
+                    {% endif %}
+                    <div class="news_content">
+                        <h3>{{item.name}}</h3>
+                        <p>
+                            {{item.text|truncatewords:20}}
+                        </p>
+
+                        <a class="news_link_second" href="{{item.id}}/">подробнее</a>
+                    </div>
+                </div>
+              {% endfor %}
+
+
+
+            </div>
+        </div>
+
+
+    </main>
+
+
+
+
+{% endblock content %}
+{% block scripts %}
+<script src="{% static 'js/news.js' %}"></script>
+{% endblock scripts %}

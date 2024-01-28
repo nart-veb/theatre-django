@@ -1,0 +1,33 @@
+{% extends "base.html" %} {% load static %} {% block title %}История{% endblock title %}
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/title.css' %}" />
+{% endblock styles %}
+{% block content %}
+<header>
+  <img class="header_image" src="{% static 'img/Безымянный-5-02 1.png' %}" alt="image" />
+  {% include 'include/nav.html' %}
+</header>
+
+
+<main>
+
+        <div class="title_container">
+            <h2>{{item.name}} ({{item.start_period}} - {{item.end_period}} )</h2>
+            <div class="title_container_body">
+                   <img src="{{item.image.url}}">
+                   <p>{{item.text|linebreaks}}</p>
+            </div>
+        </div>
+
+
+
+
+    </main>
+  <div class="actor_inner">
+    <a href="../" class="linksHover"><i class="fas fa-angle-left"></i> вернуться к списку</a>
+  </div>
+
+{% endblock content %}
+{% block scripts %}
+<script src="{% static 'js/title.js' %}"></script>
+{% endblock scripts %}

@@ -1,0 +1,51 @@
+{% extends "base.html" %} {% load static %} {% block title %}История{% endblock title %}
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/history.css' %}" />
+{% endblock styles %}
+{% block content %}
+<header>
+  <img class="header_image" src="{% static 'img/Безымянный-5-02 1.png' %}" alt="image" />
+  {% include 'include/nav.html' %}
+</header>
+
+
+<main>
+
+        <div class="history">
+            <h1 class="history_title">История театра</h1>
+            <div class="history_body">
+
+
+                {% for item in histories_list %}
+
+
+                <div class="history_body_inner">
+                    <div class="history_body_inner_title">{{item.start_period}}-{{item.end_period}}</div>
+                    <div class="history_body_inner_picture">
+                        <img src="{{item.image.url}}" alt="img">
+                    </div>
+                    <div class="history_body_inner_content">
+                        <h3>{{item.name}}</h3>
+                        <p>{{item.text|truncatewords:90}}</p>
+
+                        <a href="{{item.id}}/">подробнее</a>
+                    </div>
+                </div>
+
+
+                {% endfor %}
+
+
+
+            </div>
+        </div>
+
+
+    </main>
+
+
+
+{% endblock content %}
+{% block scripts %}
+<script src="{% static 'js/history.js' %}"></script>
+{% endblock scripts %}
