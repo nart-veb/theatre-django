@@ -6,7 +6,7 @@ from django import forms
 from django.utils.translation import gettext_lazy as _
 from django.shortcuts import get_object_or_404
 
-from config.settings import MEDIA_ROOT
+from _project.settings import MEDIA_ROOT
 from perfomances.models import Producer, Perfomance, PerfomanceImage, Poster, Ticket, Map
 
 class TicketAdminForm(forms.ModelForm):

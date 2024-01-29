@@ -4,9 +4,8 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.urls.conf import include
 
-from config.views import Index
+from _project.views import Index
 from radio.views import AudioList
-
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -21,4 +20,6 @@ urlpatterns = [
     path('partner/', include('partners.urls'), name="partner")
 ]
 
-urlpatterns = urlpatterns + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) if settings.DEBUG else urlpatterns
+# For debug mode
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
