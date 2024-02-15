@@ -1,25 +1,8 @@
 version: '3.7'
 
 services:
-  theatre-app:
-    build: ./
-    container_name: theatre-app
-    restart: always
-    command: bash entrypoint.sh
-    volumes:
-      - .:/usr/src/app
-      - ./static:/usr/src/app/static
-      - ./media:/usr/src/app/media:rw
-    ports:
-      - "8000:8000"
-    env_file:
-      - .env
-    depends_on:
-      - theatre-db
-
-
   theatre-db:
-    image: postgres:15.3-alpine
+    image: postgres:14-alpine
     container_name: theatre-db
     volumes:
       - theatre_postgres_data:/var/lib/postgresql/data/
@@ -32,6 +15,30 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+
+  theatre-app:
+    build:
+      context: .
+      dockerfile: _configs/app/Dockerfile
+    container_name: theatre-app
+    command: bash entrypoint.sh
+    volumes:
+      - ./src:/theatre
+      - ./src/static:/theatre/static
+      - ./src/media:/theatre/media:rw
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    environment:
+      WAIT-HOSTS: theatre-db
+    restart: always
+    tty: true
+    depends_on:
+      - theatre-db
+
+
+
 
 
 #  nginx:
