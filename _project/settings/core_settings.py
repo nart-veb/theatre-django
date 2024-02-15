@@ -3,7 +3,7 @@ from pathlib import Path
 from environs import Env
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 # Read our environs
 env = Env()
@@ -13,7 +13,7 @@ env.read_env()
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get("APP_SECRET_KEY", 'django-insecure-)rr%b2s@lepie3azqr5#3(tzmn-g6&z^9&*7*#3=l()+vh1!@f')
+SECRET_KEY = os.environ.get("APP_SECRET_KEY", ')rr%b2s@lepie3azqr5#3(tzmn-g6&z^9&*7*#3=l()+vh1!@f')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env.bool("APP_DEBUG", False)
@@ -31,7 +31,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # 3rd-party apps
-
     'corsheaders',
     # custom apps
     # TODO: Раздели их через полные пути
@@ -59,7 +58,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-
 ]
 
 ROOT_URLCONF = '_project.urls'

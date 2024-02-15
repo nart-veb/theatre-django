@@ -13,7 +13,7 @@ services:
     ports:
       - "8000:8000"
     env_file:
-      - ./.env.dev
+      - .env
     depends_on:
       - theatre-db
 
@@ -24,11 +24,11 @@ services:
     volumes:
       - theatre_postgres_data:/var/lib/postgresql/data/
     env_file:
-      - ./.env.dev
+      - .env
     ports:
       - "127.0.0.1:5432:5432"   # Делай изоляцию на localhost
     healthcheck:
-      test: pg_isready -d postgres -U postgres
+      test: pg_isready -d theatre_main -U admin
       interval: 10s
       timeout: 5s
       retries: 5

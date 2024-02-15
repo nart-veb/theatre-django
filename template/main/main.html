@@ -11,13 +11,13 @@
     {% include 'include/nav.html' %}
     <section class="header_title">
         <h2>Добро пожаловать</h2>
-        <a href="{% url 'poster_list' %}">купить билеты</a>
+        <a href="{% url 'posters:poster-list' %}">купить билеты</a>
     </section>
   </header>
   <main>
     <section class="main_title">
       <span class="main_title_span">Афиша</span>
-      <a class="linksHover" href="{% url 'poster_list' %}">посмотреть список</a>
+      <a class="linksHover" href="{% url 'posters:poster-list' %}">посмотреть список</a>
     </section>
     
     <section class="pieces_block">

@@ -2,7 +2,7 @@
 
 from django.db import migrations, models
 import django.db.models.deletion
-import perfomances.models
+import posters.models
 
 
 class Migration(migrations.Migration):
@@ -18,8 +18,8 @@ class Migration(migrations.Migration):
             name='Map',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('map_svg', models.FileField(upload_to=perfomances.models.Map.upload_to, verbose_name='Схема SVG')),
-                ('seats_json', models.FileField(upload_to=perfomances.models.Map.upload_to, verbose_name='Места JSON')),
+                ('map_svg', models.FileField(upload_to=posters.models.Map.upload_to, verbose_name='Схема SVG')),
+                ('seats_json', models.FileField(upload_to=posters.models.Map.upload_to, verbose_name='Места JSON')),
             ],
             options={
                 'verbose_name': 'Карта',
@@ -35,7 +35,7 @@ class Migration(migrations.Migration):
                 ('author', models.CharField(max_length=255, verbose_name='Автор')),
                 ('description', models.TextField(null=True, verbose_name='Описание спектакля')),
                 ('video_id', models.CharField(max_length=255, null=True, verbose_name='Идентификатор ютуб видео')),
-                ('placard', models.ImageField(upload_to=perfomances.models.Perfomance.upload_to, verbose_name='Плакат')),
+                ('placard', models.ImageField(upload_to=posters.models.Perfomance.upload_to, verbose_name='Плакат')),
                 ('actors', models.ManyToManyField(to='people.person', verbose_name='Актёры')),
                 ('map', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='perfomances.map', verbose_name='Карта')),
             ],
@@ -50,7 +50,7 @@ class Migration(migrations.Migration):
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('start_date', models.DateTimeField(verbose_name='Дата начала')),
                 ('close_date', models.DateTimeField(verbose_name='Дата закрытия онлайн бронирования')),
-                ('perfomance', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='perfomances.perfomance', verbose_name='Спектакль')),
+                ('perfomance', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='posters.perfomance', verbose_name='Спектакль')),
             ],
             options={
                 'verbose_name': 'Афиша',
@@ -79,7 +79,7 @@ class Migration(migrations.Migration):
                 ('price', models.DecimalField(decimal_places=2, max_digits=8, verbose_name='Цена')),
                 ('sector', models.CharField(max_length=50, verbose_name='Сектор')),
                 ('reservation', models.BooleanField(default=False, verbose_name='Забронирован')),
-                ('poster', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='perfomances.poster', verbose_name='Афиша')),
+                ('poster', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='posters.poster', verbose_name='Афиша')),
             ],
             options={
                 'verbose_name': 'Билет',
@@ -90,8 +90,8 @@ class Migration(migrations.Migration):
             name='PerfomanceImage',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('image', models.ImageField(upload_to=perfomances.models.PerfomanceImage.upload_to, verbose_name='Изображение')),
-                ('perfomance', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='perfomances.perfomance', verbose_name='Спектакль')),
+                ('image', models.ImageField(upload_to=posters.models.PerfomanceImage.upload_to, verbose_name='Изображение')),
+                ('perfomance', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='posters.perfomance', verbose_name='Спектакль')),
             ],
             options={
                 'verbose_name': 'Изображение спектакля',
@@ -101,6 +101,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='perfomance',
             name='producer',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='perfomances.producer', verbose_name='Режиссер'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='posters.producer', verbose_name='Режиссер'),
         ),
     ]

@@ -8,16 +8,17 @@ from _project.views import Index
 from radio.views import AudioList
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
     path('', Index.as_view(), name="index"),
-    path('posters/', include('perfomances.urls'), name='poster'),
+    path('posters/', include('posters.urls'), name='poster'),
     path('radio/', AudioList.as_view(), name="radio"),
     path('people/', include('people.urls'), name="people"),
     path('history/', include('histories.urls'), name="history"),
     path('halls/', include('halls.urls'), name="halls"),
     path('press/', include('press.urls'), name="press"),
     path('news/', include('news.urls'), name="news"),
-    path('partner/', include('partners.urls'), name="partner")
+    path('partner/', include('partners.urls'), name="partner"),
+    # Admin panel
+    path('admin/', admin.site.urls),
 ]
 
 # For debug mode
